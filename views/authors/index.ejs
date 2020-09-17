@@ -1,0 +1,31 @@
+<h2 class="page-header">Search Author</h2>
+
+<form action="/authors" method="GET">
+	<div class="form-row">
+		<div  class="form-item">
+			<label >Name</label>
+			<input type="text" name="name" value="<%= searchOptions.name %>">
+		</div>
+	</div>
+		<div class="form-row form-row-end">
+			<button class="btn btn-primary">Search</button>
+		</div>
+</form>
+
+<% authors.forEach( author => {%>
+   <div class="author-row">
+	<div class="author-name"> 
+		<a  href="/authors/<%= author.id%>">
+			<%= author.name %></div>
+	    </a>
+
+	<div class="btn-row">
+	<a class="btn btn-primary" href="/authors/<%= author.id%>">View</a>
+	<a class="btn btn-primary" href="/authors/<%= author.id%>/edit">Edit</a>
+
+	<form action="/authors/<%= author.id%>?_method=DELETE" method="POST">
+		<button class="btn btn-danger" type="submit">Delete</button>
+	</form>
+	</div>
+  </div>
+<% }) %>
